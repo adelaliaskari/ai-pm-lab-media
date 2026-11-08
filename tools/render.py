@@ -3,7 +3,7 @@ Usage: python3 render.py content.json OUT_DIR FONT_DIR LOGO_FILE (logo.jpg from 
 FONT_DIR must contain: naskh-400.woff2 naskh-600.woff2 naskh-700.woff2 inter-400.woff2 inter-700.woff2 inter-800.woff2
 (npm i @fontsource/noto-naskh-arabic @fontsource/inter, then copy/rename the arabic & latin files).
 content.json:
-{"cover":{"tag":"AI × Project Management","big":"۵","title":"line1<br>line2","lead":"..."},
+{"cover":{"tag":"AI × Project Management","title":"line1<br>line2","lead":"..."},
  "points":[{"num":"۱","title":"...","sub":"...","label":"پرامپت","body":"html (<b>, <span class=ph>[..]</span>)"}],
  "final":{"title":"...","lead":"...","rows":["ذخیره کن ...","سوال ...","بفرست ..."]},
  "story":{"kicker":"پست جدید","title":"...","sub":"..."}}
@@ -67,7 +67,7 @@ pts = content['points']; N = len(pts) + 2
 def foot(i): return f'<div class="foot"><div class="h"><img src="{LOGO_NAME}" alt="">@ai.pm.lab</div><div class="pg">{str(i).translate(FA)} / {str(N).translate(FA)}</div></div>'
 c = content['cover']; slides = []
 slides.append(f'''<div class="s"><div class="bar"></div><span class="tag">{c.get("tag","AI × Project Management")}</span>
-<div style="margin-top:50px"><span class="num" style="font-size:230px">{c.get("big","")}</span></div>
+<div style="height:120px"></div>
 <h1>{c["title"]}</h1><p class="lead">{c.get("lead","")}</p><div class="swipe">ورق بزن {ARROW}</div>{foot(1)}</div>''')
 for k, p in enumerate(pts, 2):
     slides.append(f'''<div class="s"><div class="bar"></div><div class="num">{p.get("num", str(k-1).translate(FA))}</div>
